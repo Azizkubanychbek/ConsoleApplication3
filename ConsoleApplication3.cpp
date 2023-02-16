@@ -1,59 +1,44 @@
-﻿// ConsoleApplication3.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-
 #include <iostream>
-#include <fstream>
+
+class Figure {
+
+public:
+	void m(){
+		std::cout << name << ": " << sides_count << std::endl;
+}
+	
+protected:
+	int sides_count = 0;
+	std::string name = "Figure";
+};
+class Triangle :public Figure {
+public:
+	void m() {
+		sides_count = 3;
+		name = "Triangle";
+		std::cout << name << ": " << sides_count << std::endl;
+	}
+
+};
+class Quadrangle :public Figure {
+public:
+	void m() {
+		sides_count = 4;
+		name = "Quadrangle ";
+		std::cout << name << ": " << sides_count<<std::endl;
+	}
+
+};
 
 int main()
 {
-    int num = 0;
-    std::ifstream fin("in.txt");
-    std::ofstream fout("out.txt");
-    fin >> num;
-    int* arr = new int[num];
-    fin >> arr[num - 1];
-    for (int i = 0; i < num-1; i++) {
-        fin >> arr[i];
-    }
-    std::cout << num << "\n";
-    for (int i = 0; i < num; i++) {
-        std::cout << arr[i] << " ";
-    }
-    std::cout << "\n";
-    int num_2 = 0;
-    fin >> num_2;
-    int* arr_2 = new int[num_2];
-    std::cout << num_2 << "\n";
-    for (int i = 1; i < num_2; i++) {
-        fin >> arr_2[i];
-    }
-    fin >> arr_2[0];
-    for (int i = 0; i < num_2; i++) {
-        std::cout << arr_2[i] << " ";
-    }
-    fout << num_2 << "\n";
-    for (int i = 0; i < num_2; i++) {
-        fout << arr_2[i] << " ";
-    }
-    fout << num << "\n";
-    for (int i = 0; i < num_2; i++) {
-        fout << arr[i] << " ";
-    }
-    delete[] arr;
-    delete[] arr_2;
-    return 0;
+	std::cout << "Количество сторон: \n";
+	Figure figure;
+	Triangle triangle;
+	Quadrangle quadrangle;
+	figure.m();
+	triangle.m();
+	quadrangle.m();
 
-
-    
+	
 }
-
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
