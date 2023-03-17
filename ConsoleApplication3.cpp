@@ -3,29 +3,34 @@
 class Figure {
 
 public:
-	void m(){
+	void m() {
 		std::cout << name << ": " << sides_count << std::endl;
-}
-	
+	}
+
 protected:
 	int sides_count = 0;
 	std::string name = "Figure";
 };
 class Triangle :public Figure {
 public:
-	void m() {
+	Triangle() {
+		name = "Trangle";
 		sides_count = 3;
-		name = "Triangle";
+	};
+	void m() {
+	
 		std::cout << name << ": " << sides_count << std::endl;
 	}
 
 };
 class Quadrangle :public Figure {
 public:
-	void m() {
-		sides_count = 4;
+	Quadrangle() {
 		name = "Quadrangle ";
-		std::cout << name << ": " << sides_count<<std::endl;
+			sides_count = 4;
+	};
+	void m() {
+			std::cout << name << ": " << sides_count << std::endl;
 	}
 
 };
@@ -40,5 +45,5 @@ int main()
 	triangle.m();
 	quadrangle.m();
 
-	
+
 }
